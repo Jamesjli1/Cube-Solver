@@ -4,7 +4,9 @@ import os
 
 sys.path.append(os.path.join(os.path.dirname(__file__), "src")) # Add src to path for imports
 
-from core.cube import Cube  # for Cube class
+from core.cube import Cube              # for Cube class
+from core.scramble import gen_scramble  # for generating scrambles
+from core.customcube import custom_cube # for loading custom cube states
 
 # Face index ranges (URFDLB)
 U = list(range(0, 9))
@@ -52,23 +54,36 @@ def main():
 
     print("\nMoves: U D L R F B, with ' or 2 (example: R, U', F2)")
     print("Type multiple moves: R U R' U'")
-    print("Commands: reset, quit\n")
+    print("Commands: scramble, create, reset, quit\n")
 
     while True:
         cmd = input("").strip()
        
         # Command to quit the program
-        if cmd.lower() in {"q", "quit", "exit"}: 
+        if cmd.lower() in {"quit", "q"}: 
             break
         # Command to reset the cube to the solved state
-        if cmd.lower() == "reset":
+        if cmd.lower() in {"reset"}:
             cube.reset() # Reset the cube to the solved state
             print("\nReset:")
             print_net(cube)
             continue
         # Scramble cube
-        if cmd.lower() in {"scramble"}:
-            break # implement scramble command later
+        if cmd.lower() in {"scramble", "s"}:
+            # Generate a random scramble and apply it to the cube
+            scramble = gen_scramble()
+            print(f"\nScramble: {scramble}")
+            for m in scramble.split(): # Apply each move in the scramble to the cube
+                cube.move(m)
+            print_net(cube)
+            continue
+        # Create a custom state
+        if cmd.lower() in {"create", "c"}:
+            stickers = custom_cube() # Get a custom cube state from user input
+            cube.set_state(stickers) # Set the cube to the custom state
+            print("\nCustom cube:")
+            print_net(cube)          # Print the custom cube state
+            continue
         if not cmd:
             continue # Skip empty input
 

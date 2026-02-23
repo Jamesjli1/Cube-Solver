@@ -36,7 +36,7 @@ def rotate_face_cw(s, face9):
 # Define move functions for each face, which rotate the face and the adjacent pieces 
 def move_U(s):
     rotate_face_cw(s, U) # Rotate the U face clockwise
-    # U clockwise: L top -> F top -> R top -> B top -> L top
+    # U clockwise: L top -> B top -> R top -> F top -> L top
     cycle(s, 18, 36, 45, 9)  # F0 R0 B0 L0
     cycle(s, 19, 37, 46, 10) # F1 R1 B1 L1
     cycle(s, 20, 38, 47, 11) # F2 R2 B2 L2
@@ -44,7 +44,7 @@ def move_U(s):
 
 def move_D(s):
     rotate_face_cw(s, D)
-    # D clockwise: L bottom -> B bottom -> R bottom -> F bottom -> L bottom
+    # D clockwise: L bottom -> F bottom -> R bottom -> B bottom -> L bottom
     cycle(s, 24, 15, 51, 42)  # F6 L6 B6 R6
     cycle(s, 25, 16, 52, 43)  # F7 L7 B7 R7
     cycle(s, 26, 17, 53, 44)  # F8 L8 B8 R8
@@ -52,7 +52,7 @@ def move_D(s):
 
 def move_R(s):
     rotate_face_cw(s, R)
-    # R clockwise: U right -> F right -> D right -> B left (reversed) -> U right
+    # R clockwise: U right -> B right -> D right -> F right -> U right
     cycle(s, 2, 51, 29, 20)   # U2 F2 D2 B6
     cycle(s, 5, 48, 32, 23)   # U5 F5 D5 B3
     cycle(s, 8, 45, 35, 26)   # U8 F8 D8 B0
@@ -60,7 +60,7 @@ def move_R(s):
 
 def move_L(s):
     rotate_face_cw(s, L)
-    # L clockwise: U left -> B right (reversed) -> D left -> F left -> U left
+    # L clockwise: U left -> F left  -> D left -> B left -> U left
     cycle(s, 0, 18, 27, 53)   # U0 B2 D0 F0
     cycle(s, 3, 21, 30, 50)   # U3 B5 D3 F3
     cycle(s, 6, 24, 33, 47)   # U6 B8 D6 F6
@@ -68,7 +68,7 @@ def move_L(s):
 
 def move_F(s):
     rotate_face_cw(s, F)
-    # F clockwise: U bottom -> R left -> D top -> L right (reversed) -> U bottom
+    # F clockwise: U front -> R front -> D front -> L front -> U front
     cycle(s, 6, 9, 29, 44)    # U6 R0 D2 L8
     cycle(s, 7, 12, 28, 41)   # U7 R3 D1 L5
     cycle(s, 8, 15, 27, 38)   # U8 R6 D0 L2
@@ -76,7 +76,7 @@ def move_F(s):
 
 def move_B(s):
     rotate_face_cw(s, B)
-    # B clockwise: U top -> L left (reversed) -> D bottom -> R right -> U top
+    # B clockwise: U back -> L back -> D back -> R back -> U back
     cycle(s, 0, 42, 35, 11)   # U0 L0 D8 R2
     cycle(s, 1, 39, 34, 14)   # U1 L3 D7 R5
     cycle(s, 2, 36, 33, 17)   # U2 L6 D6 R8
