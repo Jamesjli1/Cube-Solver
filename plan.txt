@@ -1,0 +1,28 @@
+p1: Cube engine 
+- cube representation & cube turns
+
+p2: Scrambler
+- random set of moves (avoid invalid sequences)
+- apply scrambler to cube
+
+p3: Solver 1 (hardcode beginner or cfop method)
+- gets a array for cube representation and solves it
+
+p4: Solver 2 (thistlethwaite's algorithm)
+
+p5: pygame demo
+- draw cube, create cube(color editor), scramble, reset, solve, turn
+
+p6: Scan cube with camera
+- open cam and scans the 6 side
+
+p7: move to website
+- Frontend adds on to pygame features with animated turning, orbit cam, drag to turn, solver in steps
+    using Next.js and three.js
+- Backend calls our different logic features from the user input on the frontend
+    using fastAPI
+- Deploy as a website (vercel)
+
+p8: Solver 3 (kociemba algorithm)
+
+Testing done after each step 

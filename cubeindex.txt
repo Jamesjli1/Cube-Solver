@@ -1,0 +1,50 @@
+Rubik's Cube 54 Sticker Index Reference
+
+Face order:
+U (Up)    : 0–8
+R (Right) : 9–17
+F (Front) : 18–26
+D (Down)  : 27–35
+L (Left)  : 36–44
+B (Back)  : 45–53
+
+Each face is stored in row major 3x3 order:
+0 1 2
+3 4 5
+6 7 8
+
+Face Layouts:
+
+U face (0–8)
+0  1  2
+3  4  5
+6  7  8
+
+R face (9–17)
+9  10 11
+12 13 14
+15 16 17
+
+F face (18–26)
+18 19 20
+21 22 23
+24 25 26
+
+D face (27–35)
+27 28 29
+30 31 32
+33 34 35
+
+L face (36–44)
+36 37 38
+39 40 41
+42 43 44
+
+B face (45–53)
+45 46 47
+48 49 50
+51 52 53
+
+- Indices represent fixed sticker positions
+- Turning does NOT move indices
+- Turns move the colors stored at those indices
