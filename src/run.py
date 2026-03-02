@@ -4,9 +4,10 @@ import os
 
 sys.path.append(os.path.join(os.path.dirname(__file__), "src")) # Add src to path for imports
 
-from core.cube import Cube              # for Cube class
-from core.scramble import gen_scramble  # for generating scrambles
-from core.customcube import custom_cube # for loading custom cube states
+from core.cube import Cube                        # for Cube class
+from core.scramble import gen_scramble            # for generating scrambles
+from core.customcube import custom_cube           # for loading custom cube states
+from solvers.kociembasolver import solve_kociemba # for solving the cube with Kociemba's algorithm
 
 # Face index ranges (URFDLB)
 U = list(range(0, 9))
@@ -54,7 +55,7 @@ def main():
 
     print("\nMoves: U D L R F B, with ' or 2 (example: R, U', F2)")
     print("Type multiple moves: R U R' U'")
-    print("Commands: scramble, create, reset, quit\n")
+    print("Commands: scramble, create, solve, reset, quit\n")
 
     while True:
         cmd = input("").strip()
@@ -78,11 +79,25 @@ def main():
             print_net(cube)
             continue
         # Create a custom state
-        if cmd.lower() in {"create", "c"}:
+        if cmd.lower() in {"create", "custom", "c"}:
             stickers = custom_cube() # Get a custom cube state from user input
             cube.set_state(stickers) # Set the cube to the custom state
             print("\nCustom cube:")
             print_net(cube)          # Print the custom cube state
+            continue
+        # Solve cube
+        if cmd.lower() in {"solve"}:
+            moves = solve_kociemba(cube.s) # Get the solution moves from Kociemba's algorithm
+            print(f"\nSolution: {' '.join(moves)}")
+            print("\nSolve? (click enter to solve)")
+            input("") # Wait for user to press enter
+            for m in moves: # Apply each move in the solution to the cube
+                cube.move(m)
+            print("Solved:")
+            print_net(cube) # Print the solved cube state
+            continue
+        if cmd.lower() in {"array"}: # for debug
+            print(cube.s) # Print the cube state as an array of stickers
             continue
         if not cmd:
             continue # Skip empty input
