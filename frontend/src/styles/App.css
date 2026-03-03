@@ -1,0 +1,41 @@
+/* The main container for the whole screen */
+.app-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Full screen height */
+  width: 100vw;  /* Full screen width */
+}
+
+/* The thin bar at the top */
+.topbar {
+  height: 60px;
+  background: #111;
+  border-bottom: 1px solid #333;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  font-weight: bold;
+}
+
+/* The area below the TopBar */
+.main-content {
+  display: flex;
+  flex: 1; /* Takes up the rest of the vertical space */
+}
+
+/* The 3D Cube area (Flexible) */
+.canvas-placeholder {
+  flex: 1; /* Takes up all available width on the left */
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* The Control area (Fixed) */
+.sidebar {
+  width: 350px; /* Stays this size regardless of screen width */
+  background: #1a1a1a;
+  border-left: 1px solid #333;
+  padding: 20px;
+}

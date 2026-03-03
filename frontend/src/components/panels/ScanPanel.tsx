@@ -1,0 +1,1 @@
+// When user clicks scan (might become python file to open camera)

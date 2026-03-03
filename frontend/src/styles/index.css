@@ -1,0 +1,47 @@
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  /* Force Dark Mode visuals */
+  color-scheme: dark; 
+  /* Set global text to pure white or very light gray */
+  color: #ffffff; 
+  background-color: #121212;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  display: block; /* Removes Vite's 'place-items: center' */
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden; /* Prevents unwanted scrolling */
+}
+
+/* Ensure all links and headers inherit the white color */
+a, h1, h2, h3, p {
+  color: #ffffff;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid #444;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  color: white; /* Keep button text white */
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+button:hover {
+  border-color: #646cff;
+  background-color: #2a2a2a;
+}
