@@ -1,20 +1,33 @@
+/* The "Control Center" - No visual change, just easier to edit */
+:root {
+  --bg-dark: #000000;
+  --bg-panel: #111111;
+  --bg-sidebar: #1a1a1a;
+  --border-color: #333333;
+  --primary-glow: #646cff;
+  --topbar-height: 60px;
+  --sidebar-width: 350px;
+}
+
 /* The main container for the whole screen */
 .app-layout {
   display: flex;
   flex-direction: column;
-  height: 100vh; /* Full screen height */
-  width: 100vw;  /* Full screen width */
+  height: 100vh;
+  width: 100vw;
+  background-color: var(--bg-dark); /* Using variables now */
 }
 
 /* The thin bar at the top */
 .topbar {
-  height: 60px;
-  background: #111;
-  border-bottom: 1px solid #333;
+  height: var(--topbar-height);
+  background: var(--bg-panel);
+  border-bottom: 1px solid var(--border-color);
   display: flex;
   align-items: center;
   padding: 0 20px;
   font-weight: bold;
+  color: white;
 }
 
 /* The area below the TopBar */
@@ -26,16 +39,58 @@
 /* The 3D Cube area (Flexible) */
 .canvas-placeholder {
   flex: 1; /* Takes up all available width on the left */
-  background: #000;
+  background: var(--bg-dark);
   display: flex;
   justify-content: center;
   align-items: center;
+  color: #444; /* Subtle text for "Cube Area" */
 }
 
 /* The Control area (Fixed) */
 .sidebar {
-  width: 350px; /* Stays this size regardless of screen width */
-  background: #1a1a1a;
-  border-left: 1px solid #333;
+  width: var(--sidebar-width);
+  background: var(--bg-sidebar);
+  border-left: 1px solid var(--border-color);
   padding: 20px;
+  color: white;
 }
+
+/* Buttons (when hover/ when clicked) */
+/* Button Styling */
+.cube-button {
+  width: 100%;
+  height: 50px;
+  background: var(--bg-panel);
+  border: 1px solid var(--border-color);
+  color: white;
+  font-family: inherit;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease; /* Smooth hover effect */
+  border-radius: 4px;
+}
+
+/* Hover State */
+.cube-button:hover {
+  border-color: var(--primary-glow);
+  box-shadow: 0 0 15px var(--primary-glow);
+  transform: translateY(-2px); /* Lifts slightly */
+}
+
+/* Click State */
+.cube-button:active {
+  transform: translateY(1px); /* Pushes down when clicked */
+  filter: brightness(1.2);
+}
+
+/* Simple Grid to hold buttons in Sidebar */
+.button-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+/* mouse hover */
+
+/* @Media for mobile and different screen size */

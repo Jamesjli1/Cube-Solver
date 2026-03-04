@@ -1,7 +1,7 @@
 // Not used right now
-import { useState } from 'react'          // from react
-import reactLogo from './assets/react.svg'// logos
-import viteLogo from '/vite.svg'          // logos
+import { useState } from 'react'                // from react, to use in side panel logo later
+import githubDLogo from './assets/githubdark.svg' // logos
+import webLogo from '/turbocube.svg'           // logos
 
 
 import './styles/App.css' // import files
@@ -10,8 +10,7 @@ import SideBar from './components/layout/SideBar';
 import CubeCanvas from './components/cubebox/CubeCanvas';
 
 // Website layout
-export default App;
-function App() {
+export default function App() {
   return (
     <div className="app-layout">
       <TopBar />
