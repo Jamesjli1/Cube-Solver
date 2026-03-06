@@ -1,6 +1,9 @@
-/* The "Control Center" - No visual change, just easier to edit */
+/* layout of website */
+
+/* Variables */
 :root {
   --bg-dark: #000000;
+  --bg-light: #fff
   --bg-panel: #111111;
   --bg-sidebar: #1a1a1a;
   --border-color: #333333;
@@ -18,25 +21,128 @@
   background-color: var(--bg-dark); /* Using variables now */
 }
 
-/* The thin bar at the top */
+/* 
+  Top Bar
+*/
 .topbar {
   height: var(--topbar-height);
   background: var(--bg-panel);
   border-bottom: 1px solid var(--border-color);
   display: flex;
-  align-items: center;
+  align-items: center;            /* Centers logo and text vertically */
   padding: 0 20px;
   font-weight: bold;
-  color: white;
+  justify-content: space-between; /* Pushes content to the far edges */
 }
 
-/* The area below the TopBar */
+.topbar-left {        
+  display: flex;
+  gap: 12px;                      /* Space between the SVG and the Name */
+}
+
+.app-logo {                       /* For the logo photo */
+  width: 32px;                    /* Adjust based on your SVG size */
+  height: 32px;
+}
+
+.brand-name {                     /* Text for logo */
+  font-weight: 700;               
+  font-size: 1.4rem;
+  letter-spacing: 0.5px;
+}
+
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+/* Theme slider */
+.theme-slider {
+  width: 44px;
+  height: 22px;
+  background-color: #333; /* Dark track */
+  border-radius: 15px;
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.theme-slider.light {
+  background-color: #ccc; /* Light track */
+}
+
+.slider-circle {
+  width: 16px;
+  height: 16px;
+  background-color: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  transition: transform 0.3s;
+}
+
+/* Move the circle when in light mode */
+.theme-slider.light .slider-circle {
+  transform: translateX(22px);
+  background-color: #f39c12; /* Sun-like color */
+}
+
+/* GitHub Icon sizing */
+.github-icon {
+  width: 40x;
+  height: 40px;
+  display: block;
+}
+
+/* Help button */
+.help-btn {
+  /* Force equal dimensions */
+  width: 32px; 
+  height: 32px;
+  /* Create the circle */
+  border-radius: 50%;
+  /* Center the "?" perfectly */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Reset default button behavior */
+  padding: 0; 
+  background: transparent;
+  border: 2px solid;
+  cursor: pointer;
+  font-size: 1.2rem;
+  line-height: 1; /* Prevents text height from stretching the button */
+  transition: all 0.2s ease;
+}
+
+.help-dark {
+  border-color: var(--bg-light);
+  color: var(--bg-light);
+}
+
+.help-light {
+  border-color: var(--bg-dark);
+  color: var(--bg-dark);
+}
+
+.help-btn:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 5px var(--primary-glow));
+}
+
+/* 
+  The sidebar and cube canva portion
+*/
 .main-content {
   display: flex;
   flex: 1; /* Takes up the rest of the vertical space */
 }
 
-/* The 3D Cube area (Flexible) */
+/* 
+  Cube canva (flexible)
+*/
 .canvas-placeholder {
   flex: 1; /* Takes up all available width on the left */
   background: var(--bg-dark);
@@ -46,23 +152,51 @@
   color: #444; /* Subtle text for "Cube Area" */
 }
 
-/* The Control area (Fixed) */
+/* 
+  Side Bar for controls and functions (fixed size)
+*/
 .sidebar {
   width: var(--sidebar-width);
   background: var(--bg-sidebar);
   border-left: 1px solid var(--border-color);
-  padding: 20px;
-  color: white;
+  padding: 0px 20px 20px 20px; /* Top, Right, Bottom, Left */
+  transition: background 0.2s ease; 
 }
 
-/* Buttons (when hover/ when clicked) */
+.sidebar:hover {
+  background: #1e1e1e; /* Lightens the background slightly when mouse enters */
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+}
+
+/* The License Styling */
+.sidebar-footer {
+  margin-top: auto; /* Pushes it to the bottom */
+  padding-top: 30px;
+  padding-bottom: 0px;
+  text-align: center;
+  font-size: 0.7rem;
+  color: #666; /* Subtle grey */
+  line-height: 1.5;
+}
+
+.sidebar-footer p {
+  margin: 2px 0; /* Override the browser's default big gaps */
+}
+
+/* 
+  Buttons for the sidebar
+*/
 /* Button Styling */
 .cube-button {
   width: 100%;
   height: 50px;
   background: var(--bg-panel);
   border: 1px solid var(--border-color);
-  color: white;
+  color: var(--bg-light);;
   font-family: inherit;
   font-weight: bold;
   cursor: pointer;
@@ -88,9 +222,29 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
-  margin-top: 20px;
+  margin-top: 0px;
 }
 
-/* mouse hover */
+/* 
+  @Media for mobile and different screen size 
+*/
+@media (max-width: 750px) {
+  .main-content {
+    flex-direction: column;
+    height: 100vh; /* Force the whole app to be exactly the screen height */
+    overflow: hidden; /* Prevent the whole page from bouncing around */
+  }
 
-/* @Media for mobile and different screen size */
+  .canvas-placeholder {
+    flex: 0 0 40%; /* Give the cube 40% of the screen height */
+    width: 100%;
+  }
+
+  .sidebar {
+    flex: 1; /* Take up the remaining 60% of the screen */
+    width: 100%;
+    overflow-y: auto; /* Let the buttons scroll! */
+    padding-bottom: 40px; /* Add some space so the last button isn't cut off */
+  }
+}
+

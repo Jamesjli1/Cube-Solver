@@ -37,6 +37,10 @@ export default function SideBar() {
         <Button label="Orange CW" onClick={() => handleTestClick('OCW')} />
         <Button label="Orange CCW" onClick={() => handleTestClick('OCCW')} />
       </div>
+    <div className="sidebar-footer">
+        <p>© 2026 TurboCube by James Li</p>
+        <p>Licensed under MIT</p>
+      </div>
     </aside>
   );
 }
